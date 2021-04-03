@@ -9,11 +9,13 @@ import UIKit
 import Alamofire
 import Kingfisher
 
-class SearchViewController: UIViewController, UISearchBarDelegate, UICollectionViewDelegateFlowLayout {
+class SearchViewController: UIViewController, UICollectionViewDelegateFlowLayout {
     
 
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var infoLabel: UILabel!
+    
+
     
     
     override func viewDidLoad() {
@@ -64,29 +66,6 @@ class SearchViewController: UIViewController, UISearchBarDelegate, UICollectionV
     }
     
     
-    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        self.characters.removeAll()
-        print(self.characters)
-        guard let searchText = searchBar.text?.lowercased() else {return print("error")}
-        searchBar.resignFirstResponder()
-        self.makeRequest(searchTerm: searchText) {
-                DispatchQueue.main.async {
-                    self.activityIndicatorView.isHidden = true
-                    self.activityIndicatorBackgroundView.isHidden = true
-                    self.collectionView.reloadData()
-                    if  self.characters.isEmpty{
-                        self.activityIndicatorView.isHidden = true
-                        self.activityIndicatorBackgroundView.isHidden = true
-                        self.infoLabel.isHidden = false
-                        self.infoLabel?.text = "Nothing found"
-                    } else {
-                         self.infoLabel.isHidden = true
-                    }
-            }
-        }
-    }
-    
-    
     func makeRefreshActivityIndicator() {
         activityIndicatorBackgroundView = UIView()
         activityIndicatorBackgroundView.translatesAutoresizingMaskIntoConstraints = false
@@ -117,6 +96,31 @@ class SearchViewController: UIViewController, UISearchBarDelegate, UICollectionV
         NSLayoutConstraint.activate(activityIndicatorViewConstraints)
     }
 
+}
+
+extension SearchViewController: UISearchBarDelegate{
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        self.characters.removeAll()
+        print(self.characters)
+        guard let searchText = searchBar.text?.lowercased() else {return print("error")}
+        //searchBar.resignFirstResponder()
+        self.makeRequest(searchTerm: searchText) {
+                DispatchQueue.main.async {
+                    self.activityIndicatorView.isHidden = true
+                    self.activityIndicatorBackgroundView.isHidden = true
+                    self.collectionView.reloadData()
+                    if  self.characters.isEmpty{
+                        self.activityIndicatorView.isHidden = true
+                        self.activityIndicatorBackgroundView.isHidden = true
+                        self.infoLabel.isHidden = false
+                        self.infoLabel?.text = "Nothing found"
+                    } else {
+                         self.infoLabel.isHidden = true
+                    }
+            }
+        }
+    }
+    
     func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
         makeRefreshActivityIndicator()
         activityIndicatorView.isHidden = true
@@ -126,10 +130,25 @@ class SearchViewController: UIViewController, UISearchBarDelegate, UICollectionV
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
         self.dismiss(animated: true, completion: nil)
     }
-
-
+    
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        self.makeRequest(searchTerm: searchText) {
+                DispatchQueue.main.async {
+                    self.activityIndicatorView.isHidden = true
+                    self.activityIndicatorBackgroundView.isHidden = true
+                    self.collectionView.reloadData()
+                    if  self.characters.isEmpty{
+                        self.activityIndicatorView.isHidden = true
+                        self.activityIndicatorBackgroundView.isHidden = true
+                        self.infoLabel.isHidden = false
+                        self.infoLabel?.text = "Nothing found"
+                    } else {
+                         self.infoLabel.isHidden = true
+                    }
+            }
+        }
+    }
 }
-
 
 extension SearchViewController: UICollectionViewDelegate, UICollectionViewDataSource{
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
