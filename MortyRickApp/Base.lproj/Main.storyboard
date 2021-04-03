@@ -265,9 +265,8 @@
                                             <rect key="frame" x="0.0" y="0.0" width="173" height="220"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageSizeForAccessibilityContentSizeCategory="YES" lineBreakMode="middleTruncation" pointerInteraction="YES" translatesAutoresizingMaskIntoConstraints="NO" id="4W5-LD-S5k">
-                                                    <rect key="frame" x="118" y="117" width="51" height="51"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" adjustsImageSizeForAccessibilityContentSizeCategory="YES" lineBreakMode="middleTruncation" pointerInteraction="YES" translatesAutoresizingMaskIntoConstraints="NO" id="4W5-LD-S5k">
+                                                    <rect key="frame" x="151" y="184" width="22" height="36"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="30"/>
                                                     <color key="tintColor" red="0.02136552727" green="0.011861690540000001" blue="0.046180996189999997" alpha="0.84999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <state key="normal" image="star" catalog="system"/>
@@ -288,9 +287,11 @@
                                                 <constraint firstItem="FnA-MV-aoe" firstAttribute="top" secondItem="kBY-rm-0YA" secondAttribute="top" id="6h6-6h-aJA"/>
                                                 <constraint firstItem="7J5-ej-jid" firstAttribute="top" secondItem="FnA-MV-aoe" secondAttribute="bottom" constant="15" id="EBR-m4-t4p"/>
                                                 <constraint firstItem="FnA-MV-aoe" firstAttribute="leading" secondItem="kBY-rm-0YA" secondAttribute="leading" constant="4" id="HFU-bX-3ct"/>
+                                                <constraint firstAttribute="trailing" secondItem="4W5-LD-S5k" secondAttribute="trailing" id="RP5-Iq-ZhX"/>
                                                 <constraint firstAttribute="trailing" secondItem="FnA-MV-aoe" secondAttribute="trailing" constant="4" id="RqQ-kP-kGO"/>
                                                 <constraint firstAttribute="bottom" secondItem="7J5-ej-jid" secondAttribute="bottom" constant="16.5" id="Ylz-F2-AJI"/>
                                                 <constraint firstItem="FnA-MV-aoe" firstAttribute="centerX" secondItem="kBY-rm-0YA" secondAttribute="centerX" id="gJi-jp-Ee0"/>
+                                                <constraint firstAttribute="bottom" secondItem="4W5-LD-S5k" secondAttribute="bottom" id="hGP-c1-WzQ"/>
                                                 <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="7J5-ej-jid" secondAttribute="trailing" id="oTd-x8-pjh"/>
                                                 <constraint firstItem="7J5-ej-jid" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="kBY-rm-0YA" secondAttribute="leading" id="t56-DZ-3xV"/>
                                             </constraints>
